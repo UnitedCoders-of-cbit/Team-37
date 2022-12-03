@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="index.css" />
+    <title>AI Start-Up Validator</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        background: linear-gradient(#243b55, #243b55);
+      }
+      h1 {
+        color: aliceblue;
+        text-shadow: 2px 2px 8px #36e5f5;
+      }
+
+      .contain,
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 50px;
+        padding-right: 50px;
+        gap: 20px;
+        text-shadow: 5px 5px 8px #847c7c;
+        background: rgba(87, 211, 246, 0.5);
+        box-sizing: border-box;
+        box-shadow: 0 40px 50px rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+        color: whitesmoke;
+      }
+      .contain {
+        display: grid;
+        justify-content: space-around;
+        grid-template-columns: 0.25fr 0.25fr;
+        grid-template-rows: 1fr;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: space-around; */
+        height: 100%;
+        width: 100%;
+        padding-left: auto;
+        padding-right: auto;
+      }
+      button {
+        display: block;
+        height: 39px;
+        width: 131px;
+        margin-top: 10px;
+      }
+
+      /* style for anchor button
+      a {
+        position: relative;
+        display: inline-block;
+        padding: 0px 0px;
+        color: #03e9f4;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.5s;
+        margin-top: 40px;
+        letter-spacing: 4px;
+      }
+
+      a:hover {
+        background: #03e9f4;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+          0 0 100px #03e9f4;
+      }
+
+      a span {
+        position: absolute;
+        display: block;
+      }
+
+      a span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #03e9f4);
+        animation: btn-anim1 1s linear infinite;
+      }
+
+      @keyframes btn-anim1 {
+        0% {
+          left: -100%;
+        }
+        50%,
+        100% {
+          left: 100%;
+        }
+      }
+
+      a span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #03e9f4);
+        animation: btn-anim2 1s linear infinite;
+        animation-delay: 0.25s;
+      }
+
+      @keyframes btn-anim2 {
+        0% {
+          top: -100%;
+        }
+        50%,
+        100% {
+          top: 100%;
+        }
+      }
+
+      a span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, transparent, #03e9f4);
+        animation: btn-anim3 1s linear infinite;
+        animation-delay: 0.5s;
+      }
+
+      @keyframes btn-anim3 {
+        0% {
+          right: -100%;
+        }
+        50%,
+        100% {
+          right: 100%;
+        }
+      }
+
+      a span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #03e9f4);
+        animation: btn-anim4 1s linear infinite;
+        animation-delay: 0.75s;
+      } */
+
+      pre {
+        color: white;
+      }
+
+      @keyframes btn-anim4 {
+        0% {
+          bottom: -100%;
+        }
+        50%,
+        100% {
+          bottom: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>AI Start-Up Validator</h1>
+
+      <form action="{{ url_for('predict')}}" method="post">
+        <div class="contain">
+          <label for="market">Choose your market:</label>
+          <select name="market" id="market">
+            <option value="1">EdTech</option>
+            <option value="2">FinTech</option>
+            <option value="3">Med</option>
+            <option value="4">AI/ML</option>
+            <option value="5">Retail</option>
+            <option value="6">Commerce</option>
+            <option value="7">Software Services</option>
+            <option value="8">TeleCom</option>
+            <option value="9">Travel</option>
+            <option value="10">Other</option>
+          </select>
+
+          <label for="country">Choose your country:</label>
+          <select name="country" id="country">
+            <option value="1">USA</option>
+            <option value="2">China</option>
+            <option value="3">India</option>
+            <option value="4">UK</option>
+            <option value="5">Japan</option>
+            <option value="6">Singapore</option>
+            <option value="7">Sweden</option>
+            <option value="8">Germany</option>
+            <option value="9">Canada</option>
+            <option value="10">Other</option>
+          </select>
+
+          <label for="no_of_investors">Number of Investors:</label>
+          <input
+            type="number"
+            name="no_of_investors"
+            required="required"
+            min="0"
+            max="10"
+          />
+
+          <label for="Seed Funding">Seed Funding($M):</label>
+          <input type="number" name="seed_funding($M)" required="required" />
+          <label for="competition">Competition(0-10):</label>
+          <input type="number" name="competition" required="required" />
+          <label for="Market Share">Market Share(0-100):</label>
+          <input type="number" name="market_share" required="required" />
+          <label for="Market Potential">Market Potential(0-10):</label>
+          <input type="number" name="market_potential" required="required" />
+          <label for="Vision Uniqueness">Vision Uniqueness:</label>
+          <input type="number" name="vision_uniqueness" required="required" />
+          <label for="founders_prev_succ_startups"
+            >Number of Succeeded Startups by Founders:</label
+          >
+          <input type="number" name="succ" required="required" />
+          <label for="founders_prev_fail_startups"
+            >Number of Failed Startups by Founders:</label
+          >
+          <input type="number" name="fail" required="required" />
+          <label for="scalability">Scalability:</label>
+
+          <input type="number" name="scalability" required="required" />
+          <label for="avg_cart_value">Average Cart Value:</label>
+
+          <input type="number" name="avg_cart_value" required="required" />
+          <label for="lifetime_customer_value">Lifetime Cart Value:</label>
+          <input
+            type="number"
+            name="lifetime_customer_value"
+            required="required"
+          />
+          <label for="knowledge_of_expertise">Knowledge of Expertise:</label>
+          <input
+            type="number"
+            name="knowledge_of_expertise"
+            required="required"
+          />
+          <label for="uniquenes_of_product">Uniqueness of Product:</label>
+          <input
+            type="number"
+            name="uniquenes_of_product"
+            required="required"
+          />
+          <label for="revenue($M)">Revenue:</label>
+          <input type="number" name="revenue($M)" required="required" />
+          <label for="seriesA_funding($M)">SeriesA Funding:</label>
+          <input type="number" name="seriesA_funding($M)" required="required" />
+          <label for="seriesB_funding($M)">SeriesB Funding:</label>
+          <input type="number" name="seriesB_funding($M)" required="required" />
+          <label for="seriesC_funding($M)">SeriesC Funding:</label>
+          <input type="number" name="seriesC_funding($M)" required="required" />
+          <label for="seriesD_funding($M)">SeriesD Funding:</label>
+          <input type="number" name="seriesD_funding($M)" required="required" />
+
+          <label for="Driven">Driven?</label>
+          <select name="driven" id="driven">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+
+          <label for="Time investment">Time Investment?</label>
+          <select name="time_investment" id="time_investment">
+            <option value="1">Full time</option>
+            <option value="0">Part time</option>
+          </select>
+          <!-- <label for="seriesD_funding($M)">SeriesD Funding:</label>
+        <input type="number" name="seriesD_funding($M)" required="required" /> -->
+          <label for="momg">Month on Month Growth:</label>
+          <input type="number" id="momg" name="momg" required="required" />
+          <label for="CompetingWith">Competing With?</label>
+          <select name="competing_with" id="CompetingWith">
+            <option value="0">Price</option>
+            <option value="1">Brand</option>
+          </select>
+        </div>
+        <!-- <input
+          type="text"
+          name="profits($M)"
+          placeholder="profits($M)"
+          required="required"
+        /> -->
+
+        <button type="submit" class="">
+          Predict
+          <br />
+        </button>
+      </form>
+
+      <br />
+      <br />
+      <div class="contain">
+        <pre class="result">{{ prediction_text }}</pre>
+      </div>
+    </div>
+  </body>
+</html>

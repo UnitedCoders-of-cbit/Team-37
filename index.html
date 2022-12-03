@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="index.css" />
+    <title>AI Start-Up Validator</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      html,
+      body {
+        background: linear-gradient(#141e30, #243b55);
+        height: 100vh;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+      h1 {
+        color: azure;
+      }
+      form {
+        display: inline-flexbox;
+        background: rgba(255, 255, 255, 0.3);
+        padding: 3em;
+        width: 800px;
+        align-items: center;
+        justify-content: center;
+        /* height: 100px; */
+        border-radius: 20px;
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        position: relative;
+        transition: all 0.2s ease-in-out;
+      }
+      /* label {
+        display: inline-block;
+      } */
+      input {
+        background: transparent;
+        width: 200px;
+        padding: 1em;
+        margin-bottom: 2em;
+        border: none;
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5000px;
+        backdrop-filter: blur(5px);
+        box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+        color: #fff;
+        font-family: Montserrat, sans-serif;
+        font-weight: 500;
+        transition: all 0.2s ease-in-out;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      input:hover {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+      }
+      [type="text"] {
+        &:focus {
+          background: rgba(255, 255, 255, 0.1);
+          box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      a {
+        position: relative;
+        display: inline-block;
+        padding: 15px 5px;
+        color: #03e9f4;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.5s;
+        letter-spacing: 4px;
+      }
+      button {
+        border: none;
+        background-color: aliceblue;
+        width: 101px;
+        height: 49.2px;
+      }
+
+      a:hover {
+        background: #03e9f4;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+          0 0 100px #03e9f4;
+      }
+
+      a span {
+        position: absolute;
+        display: block;
+      }
+
+      a span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #03e9f4);
+        animation: btn-anim1 1s linear infinite;
+      }
+
+      @keyframes btn-anim1 {
+        0% {
+          left: -100%;
+        }
+        50%,
+        100% {
+          left: 100%;
+        }
+      }
+
+      a span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #03e9f4);
+        animation: btn-anim2 1s linear infinite;
+        animation-delay: 0.25s;
+      }
+
+      @keyframes btn-anim2 {
+        0% {
+          top: -100%;
+        }
+        50%,
+        100% {
+          top: 100%;
+        }
+      }
+
+      a span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, transparent, #03e9f4);
+        animation: btn-anim3 1s linear infinite;
+        animation-delay: 0.5s;
+      }
+
+      @keyframes btn-anim3 {
+        0% {
+          right: -100%;
+        }
+        50%,
+        100% {
+          right: 100%;
+        }
+      }
+
+      a span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #03e9f4);
+        animation: btn-anim4 1s linear infinite;
+        animation-delay: 0.75s;
+      }
+
+      @keyframes btn-anim4 {
+        0% {
+          bottom: -100%;
+        }
+        50%,
+        100% {
+          bottom: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="header">AI Start-Up Validator</h1>
+
+      <form class="form" action="{{ url_for('predict')}}" method="post">
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Market :</span>
+            <input
+              type="text"
+              name="Market"
+              placeholder="Market"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">Active_years :</span>
+
+            <input
+              type="text"
+              name="Active_years"
+              placeholder="Active_years"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Country :</span>
+
+            <input
+              type="text"
+              name="Country"
+              placeholder="Country"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">No. of founders :</span>
+
+            <input
+              type="text"
+              name="No._of_founders"
+              placeholder="No. of founders"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Average age of founders :</span>
+
+            <input
+              type="text"
+              name="market"
+              placeholder="Avg age of founders"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">No. of Investors :</span>
+
+            <input
+              type="text"
+              name="active_years"
+              placeholder="active_years"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Seed Funding</span>
+            <input
+              type="text"
+              name="market"
+              placeholder="Seed Funding($M)"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">Competition</span>
+
+            <input
+              type="text"
+              name="active_years"
+              placeholder="Competition"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Market Share</span>
+
+            <input
+              type="text"
+              name="market"
+              placeholder="Market Share"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">Market Potential</span>
+            <input
+              type="text"
+              name="active_years"
+              placeholder="Market Potential"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Vision Uniqueness</span>
+            <input
+              type="text"
+              name="market"
+              placeholder="Vision Uniqueness"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">Previous Success Startups</span>
+            <input
+              type="text"
+              name="active_years"
+              placeholder="Prv Success "
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Previous failure Startups</span>
+
+            <input
+              type="text"
+              name="market"
+              placeholder="prev fail"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">Scalability</span>
+
+            <input
+              type="text"
+              name="active_years"
+              placeholder="Scalability"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Average Cart Value</span>
+
+            <input
+              type="text"
+              name="market"
+              placeholder="Avg Cart Value"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">Life Time Customer Value</span>
+
+            <input
+              type="text"
+              name="active_years"
+              placeholder="Lifetime Customer Value"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Knowledge of Expertise</span>
+
+            <input
+              type="text"
+              name="market"
+              placeholder="Knowledge of Expertise"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">Uniqueness of product</span>
+
+            <input
+              type="text"
+              name="active_years"
+              placeholder="Uniqueness of product"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Revenue($M)</span>
+
+            <input
+              type="text"
+              name="market"
+              placeholder="Revenue($M)"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">SeriesA Funding($M)</span>
+
+            <input
+              type="text"
+              name="active_years"
+              placeholder="SeriesA Funding($M)"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">SeriesB Funding($M)</span>
+
+            <input
+              type="text"
+              name="market"
+              placeholder="SeriesB Funding($M)"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">SeriesC Funding($M)</span>
+
+            <input
+              type="text"
+              name="active_years"
+              placeholder="SeriesC Funding($M)"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">SeriesD Funding($M)</span>
+
+            <input
+              type="text"
+              name="market"
+              placeholder="SeriesD Funding($M)"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">Profits($M)</span>
+
+            <input
+              type="text"
+              name="active_years"
+              placeholder="Profits($M)"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="flx">
+          <label class="lbl">
+            <span class="lbl-nms">Average Cart Value</span>
+
+            <input
+              type="text"
+              name="market"
+              placeholder="Avg Cart Value"
+              required="required"
+            />
+          </label>
+          <label class="lbl">
+            <span class="lbl-nms">Life Time Customer Value</span>
+
+            <input
+              type="text"
+              name="active_years"
+              placeholder="Lifetime Customer Value"
+              required="required"
+            />
+          </label>
+        </div>
+        <div class="btn">
+          <button type="submit" class="btn btn-primary btn-block btn-large">
+            <a href="#">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              predict
+            </a>
+            <br />
+          </button>
+        </div>
+      </form>
+
+      <br />
+      <br />
+      {{ prediction_text }}
+    </div>
+  </body>
+</html>
